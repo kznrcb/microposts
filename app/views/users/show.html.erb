@@ -2,3 +2,38 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<p>
+  (<%= link_to "edit user profile" , edit_user_path(@user.id) %>)
+</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      
+      <%= f.label :name %>
+      <p><%=@user.name %></p>
+
+      <%= f.label :email %>
+      <p><%=@user.email %></p>
+
+      <%= f.label :password %>
+      <p><%=@user.password %></p>
+
+      <%= f.label :profile %>
+      <p><%=@user.profile %></p>
+      
+      <%= f.label :birthday %>
+      <p><%=@user.profile %></p>
+
+      <%= f.label :gender %>
+      <p><%=@user.gender %></p>
+
+      <%= f.label :area %>
+      <p><%=@user.area %></p>
+
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
