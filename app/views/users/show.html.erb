@@ -4,7 +4,7 @@
 </h1>
 
 <p>
-  (<%= link_to "edit user profile" , edit_user_path(@user.id) %>)
+  <%= link_to "(edit user profile)" , edit_user_path(@user) %>
 </p>
 
 <div class="row">
@@ -18,22 +18,20 @@
       <p><%=@user.email %></p>
 
       <%= f.label :password %>
-      <p><%=@user.password %></p>
+      <p>**********</p>
 
       <%= f.label :profile %>
-      <p><%=@user.profile %></p>
+      <p><%= registrated_data_for(@user.profile)%></p>
       
       <%= f.label :birthday %>
-      <p><%=@user.profile %></p>
+      <p><%= registrated_data_for(@user.birthday)%></p>
 
       <%= f.label :gender %>
-      <p><%=@user.gender %></p>
+       <p><%= registrated_data_for(@user.gender)%></p>
 
       <%= f.label :area %>
-      <p><%=@user.area %></p>
+      <p><%= registrated_data_for(@user.area)%></p>
 
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
