@@ -7,11 +7,9 @@ class ApplicationController < ActionController::Base
   private
   def logged_in_user
     unless logged_in?
-      unless current_user == User.find(params[:id])
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
     end
   end
   

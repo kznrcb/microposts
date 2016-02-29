@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
+  before_action :collect_user, only: [:edit, :update]
   
   def show
    @user = User.find(params[:id])
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
   end
   
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = 'Successfully edited user profile'
       redirect_to @user
@@ -35,11 +37,18 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    unless User.find(params[:id]) == current_user && logged_in?
-      flash[:danger] = "Please log in."
-      redirect_to(login_path)
+    unless logged_in?
+      flash[:danger] = "Invalid request"
+      redirect_to root_path
     end
   end
+  
+  def collect_user
+    @user = User.find(params[:id])
+    redirect_to root_path flash[:danger] = "Invalid request" if @user != current_user
+  end
+  
+  
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
