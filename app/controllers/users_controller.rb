@@ -36,8 +36,10 @@ class UsersController < ApplicationController
 
   def set_user
     redirect_to login_path, notice: "Please sign in." unless logged_in?
-    @user = User.find(params[:id])      
-    redirect_to(root_path) unless current_user
+    @user = User.find(params[:id])
+    if @user != current_user then
+      redirect_to(login_path)
+    end
   end
 
   def user_params
