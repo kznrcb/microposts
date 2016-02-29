@@ -35,7 +35,9 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    redirect_to login_path, notice: "Please sign in." unless logged_in?
+    @user = User.find(params[:id])      
+    redirect_to(root_path) unless current_user
   end
 
   def user_params
