@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update]
   before_action :collect_user, only: [:edit, :update]
   
   def show
@@ -36,12 +36,12 @@ class UsersController < ApplicationController
 
   private
 
-  # def set_user
-  #  unless logged_in?
-  #    flash[:danger] = "Invalid request"
-  #    redirect_to root_path
-  #  end
-  # end
+  def set_user
+    unless logged_in?
+      flash[:danger] = "Invalid request"
+      redirect_to root_path
+    end
+  end
   
   def collect_user
     @user = User.find(params[:id])
