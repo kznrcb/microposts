@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :collect_user, only: [:edit, :update]
   
   def show
+<<<<<<< HEAD
    @user = User.find(params[:id])
    @microposts = @user.microposts.order(created_at: :desc)
+=======
+>>>>>>> user-profile
   end
   
   def edit
-   @user = User.find(params[:id])
   end
   
   def update
@@ -38,7 +41,13 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
+  
+  def collect_user
+    if @user != current_user || !logged_in? then
+     redirect_to root_path flash[:danger] = "Invalid request" 
+    end
+  end
+  
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
                                  :profile, :birthday, :gender, :area)
