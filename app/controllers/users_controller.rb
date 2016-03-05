@@ -3,11 +3,7 @@ class UsersController < ApplicationController
   before_action :collect_user, only: [:edit, :update]
   
   def show
-<<<<<<< HEAD
-   @user = User.find(params[:id])
    @microposts = @user.microposts.order(created_at: :desc)
-=======
->>>>>>> user-profile
   end
   
   def edit
