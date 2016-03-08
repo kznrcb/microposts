@@ -1,0 +1,50 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    
+    <%= render 'shared/stats' %>
+    
+  </aside>
+  
+  <div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render 'follow_form' if @user == current_user %>
+      <% if @users.any? %>
+        <h3><%= @users.count %></h3>
+        <ol class="follows">
+          <% @users.each do |follow| %>
+            <%= render partial: 'follows/follow', locals: { follow: follow } %>
+          <% end %>
+        </ol>
+      <% end %>
+    </div>
+  
+
+<% if false %> 
+  <%= @title %>
+  <%= @user.name %>
+  <% if @users.any? %>
+    <% @users.each do |user|%>
+      <%= user.name %>
+    <% end %>
+  <% end %>
+<% end %>
+<!--
+<% if false %> 
+<div class="panel-body">
+  <%= render 'follow_form' if logged_in? %>
+  <% if @users.any? %>
+    <h3><%= @users.count %>)</h3>
+        <ol class="follows">
+          <%= render @follows %>
+        </ol>
+  <% end %>
+</div>
+ <% end %>
+-->

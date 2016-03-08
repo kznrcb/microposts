@@ -6,6 +6,8 @@
         <%= @user.name %>
       </h1>
     </section>
+    
+    <%= render 'shared/stats' %>
 
     <div class="row">
         <%= form_for(@user) do |f| %>
@@ -38,7 +40,8 @@
   
   <div class="col-md-8">
   <div class="panel panel-default">
-    
+  
+  <!--
     <div class="panel-heading">
       <ul class="nav nav-pills">
   	    <li role="presentation">
@@ -52,7 +55,8 @@
   	    </li>
       </ul>
     </div>
-    
+  -->
+  
     <div class="panel-body">
       <%= render 'follow_form' if logged_in? %>
       <% if @user.microposts.any? %>
