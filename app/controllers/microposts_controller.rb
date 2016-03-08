@@ -24,3 +24,5 @@ class MicropostsController < ApplicationController
     params.require(:micropost).permit(:content)
   end
 end
+
+
