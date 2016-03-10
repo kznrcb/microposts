@@ -1,7 +1,12 @@
 <div class="col-md-8">
   <li id="follow-<%= follow.id %>">
     <%= link_to gravatar_for(follow, size: 50), follow %>
-    <span class="user"><%= link_to follow.name, follow %></span>
-    </br>
+    <span class="username"><%= link_to follow.name, follow %></span></br>
+    <span class="userprofile"><%= follow.profile %></span>
+    </br></br></br>
+    <div class="col-md-6">
+      <%= render 'users/follow_form', user: follow %>
+    </div>
+    </br></br>
   </li>
 </div>

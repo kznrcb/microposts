@@ -13,5 +13,9 @@ module UsersHelper
       content
     end
   end
-
+  
+  def user(content)
+    content
+  end
+  
 end

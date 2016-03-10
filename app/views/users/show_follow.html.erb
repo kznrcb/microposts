@@ -12,11 +12,11 @@
   </aside>
   
   <div class="col-md-8">
-  
-      <%= render 'follow_form' if @user == current_user %>
+      
+      <%= render 'follow_form', user: @user if @user == current_user %>
       
       <% if @users.any? %>
-        <h3><%= @users.count %></h3>
+        <h3><%= @users.count %> <%= @title %></h3>
         <ol class="follows">
           <% @users.each do |follow| %>
             <%= render partial: 'follows/follow', locals: { follow: follow } %>
@@ -24,7 +24,7 @@
           <% end %>
         </ol>
       <% end %>
-    </div>
+  </div>
   
 
 <% if false %> 
