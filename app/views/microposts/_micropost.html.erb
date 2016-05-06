@@ -7,6 +7,15 @@
      <% if current_user == micropost.user %>
           <%= link_to "delete", micropost_path(micropost), method: :delete, data: { confirm: "You sure?" } %>
      <% end %>
+    
+    <br/> 
+    <a href="<%= followers_user_path(@user) %>">
+        <strong id="follower_users" class="stat">
+          <%= micropost.likes.count %>
+        </strong>
+    users like this posts
+    </a>
+    
     <br/>
     <%= render partial: 'users/like', locals: { microposts: micropost } %>
 
