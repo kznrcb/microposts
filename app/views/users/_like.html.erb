@@ -1,0 +1,7 @@
+<% if current_user != microposts.user %>
+  <% if microposts.liked? current_user %>
+    <%= link_to "cancel like", micropost_likes_path(microposts), method: :delete %>
+  <% else %>
+    <%= link_to "like this post", micropost_likes_path(microposts), method: :post %>
+  <% end %>
+<% end %>
