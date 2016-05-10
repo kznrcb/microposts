@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts do
     resource :likes, only: [:create, :destroy]
+    member do
+      get :liked_users
+    end
   end
   resources :follows
   resources :relationships, only: [:create, :destroy]

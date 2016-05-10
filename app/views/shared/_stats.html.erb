@@ -14,10 +14,10 @@
     followers
   </a>
    and 
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="follower_users" class="stat">
+  <a href="<%= liked_users_micropost_path(@user) %>">
+    <strong id="liked_posts" class="stat">
       <%= @user.likes.count %>
     </strong>
-    like posts
+    liked posts
   </a>
 </div>

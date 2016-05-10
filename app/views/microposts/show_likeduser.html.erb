@@ -1,0 +1,29 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for current_user %>
+        <%= current_user.name %>
+      </h1>
+    </section>
+    
+    <%= render 'shared/stats' %>
+    
+  </aside>
+  
+  <div class="col-md-8">
+      
+      <%# Objective post %>
+      <%= render partial: 'micropost', locals: { micropost: @micropost } %>
+
+      <%# Liked user list %>
+      <h3><%= @title %></h3>
+      <% if @users.any? %>
+        <ol class="follows">
+          <% @users.each do |follow| %>
+            <%= render partial: 'follows/follow', locals: { follow: follow } %>
+          <% end %>
+        </ol>
+      <% end %>
+
+  </div>

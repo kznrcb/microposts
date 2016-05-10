@@ -44,11 +44,6 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
   
-  def favoritposts
-    @favoritposts = @user.like_microposts.order(created_at: :desc)
-    render 'favorites'
-  end  
-
   private
 
   def set_user

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :follower_users, through: :follower_relationships, source: :follower
   
   has_many :likes, dependent: :destroy
+  has_many :add_likes, through: :likes, source: :micropost
 
   # 他のユーザーをフォローする
   def follow(other_user)
@@ -44,6 +45,7 @@ class User < ActiveRecord::Base
   def feed_items
     Micropost.where(user_id: following_user_ids + [self.id])
   end
+  
   
   # add like to the micropost
   # def like_add(other_micropost)

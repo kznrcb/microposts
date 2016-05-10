@@ -20,6 +20,13 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def liked_users
+    @title = "liked users list is below"
+    @micropost = Micropost.find(params[:id])
+    @users = @micropost.likeusers
+    render 'show_likeduser'
+  end
+
   private
   def micropost_params
     params.require(:micropost).permit(:content)
