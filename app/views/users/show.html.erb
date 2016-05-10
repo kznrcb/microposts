@@ -39,25 +39,6 @@
   </aside>
   
   <div class="col-md-8">
-  <!--<div class="panel panel-default">-->
-  
-  <!--
-    <div class="panel-heading">
-      <ul class="nav nav-pills">
-  	    <li role="presentation">
-  	      <a href="#">Microposts <span class="badge">99</span></a>
-  	    </li>
-  	    <li role="presentation">
-  	      <a href="#">Followings <span class="badge">99</span></a>
-  	    </li>
-  	    <li role="presentation">
-  	      <a href="#">Followers <span class="badge">99</span></a>
-  	    </li>
-      </ul>
-    </div>
-  -->
-  
-    <!-- <div class="panel-body"> -->
       <%= render 'follow_form',user: @user if logged_in? %>
       <% if @user.microposts.any? %>
         <h3>Microposts (<%= @user.microposts.count %>)</h3>
@@ -65,8 +46,7 @@
           <%= render @microposts %>
         </ol>
       <% end %>
-    <!-- </div> -->
-  <!--</div>-->
   </div>
+
 </div>
 

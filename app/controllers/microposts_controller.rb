@@ -22,8 +22,9 @@ class MicropostsController < ApplicationController
 
   def liked_users
     @title = "liked users list is below"
-    @micropost = Micropost.find(params[:id])
-    @users = @micropost.likeusers
+    @micropost = current_user.microposts.build
+    @objmicropost = Micropost.find(params[:id])
+    @users = @objmicropost.likeusers
     render 'show_likeduser'
   end
 

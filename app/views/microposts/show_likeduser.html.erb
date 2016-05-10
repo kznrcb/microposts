@@ -1,20 +1,23 @@
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for current_user %>
-        <%= current_user.name %>
-      </h1>
-    </section>
-    
-    <%= render 'shared/stats' %>
-    
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
   </aside>
   
   <div class="col-md-8">
-      
+    
       <%# Objective post %>
-      <%= render partial: 'micropost', locals: { micropost: @micropost } %>
+      <h3>Objective post</h3>
+      <ol class="microposts">
+      <%= render partial: 'micropost', locals: { micropost: @objmicropost } %>
+      </ol>
 
       <%# Liked user list %>
       <h3><%= @title %></h3>

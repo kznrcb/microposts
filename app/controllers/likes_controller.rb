@@ -7,7 +7,9 @@ class LikesController < ApplicationController
         #@micropost = Micropost.find(params[:micropost_id])
         #current_user.like_add(@micropost)
       if @like.save
-        redirect_to root_url, notice: "お気に入りに登録しました"
+        flash[:success] = "successfully added to liked post!"
+        redirect_to root_url
+      # redirect_to root_url, notice: "お気に入りに登録しました"
       else
         redirect_to root_url, alert: "このツイートはお気に入りに登録できません"
       end
