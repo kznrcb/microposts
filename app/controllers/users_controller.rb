@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :following, :followers]
+  before_action :set_user, only: [:show, :edit, :update, :following, :followers, :liked_posts]
   before_action :collect_user, only: [:edit, :update]
   
   def show
@@ -42,6 +42,13 @@ class UsersController < ApplicationController
     @title = "follwers"
     @users = @user.follower_users
     render 'show_follow'
+  end
+  
+  def liked_posts
+    @title = "liked posts list is below"
+    @micropost = current_user.microposts.build
+    @objmicroposts = Micropost.includes(:likes).where(likes: {user_id: @user.id})
+    render 'show_likedposts'
   end
   
   private

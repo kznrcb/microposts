@@ -11,7 +11,8 @@ class LikesController < ApplicationController
         redirect_to root_url
       # redirect_to root_url, notice: "お気に入りに登録しました"
       else
-        redirect_to root_url, alert: "このツイートはお気に入りに登録できません"
+        flash[:denger] = "procedure faild"
+        redirect_to root_url
       end
     end
 
@@ -21,6 +22,7 @@ class LikesController < ApplicationController
         #current_user.like_del(@micropost)
       @like = current_user.likes.find_by!(micropost_id: params[:micropost_id])
       @like.destroy
-      redirect_to root_url, notice: "お気に入りを解除しました"
+      flash[:success] = "successfully removed from liked post!"
+      redirect_to root_url
     end
 end

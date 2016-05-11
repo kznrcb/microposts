@@ -7,14 +7,14 @@ Rails.application.routes.draw do
   
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :liked_posts
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts do
     resource :likes, only: [:create, :destroy]
     member do
-      get :liked_users
+      get :liked_users # micropost id の配下でユーザーを表示できる。
     end
   end
   resources :follows

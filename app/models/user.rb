@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :microposts
+  has_many :likeposts, through: :likes, source: :micropost
   
   has_many :following_relationships, class_name:  "Relationship",
                                      foreign_key: "follower_id",
@@ -46,6 +47,14 @@ class User < ActiveRecord::Base
     Micropost.where(user_id: following_user_ids + [self.id])
   end
   
+  #def feed_likeditems
+  #  Micropost.includes(:likes).where(likes: {user_id: 1})
+  #  likeusers
+  #end
+  
+  #def feed_allitems
+  #  Micropost.all
+  #end
   
   # add like to the micropost
   # def like_add(other_micropost)
