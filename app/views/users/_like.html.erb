@@ -1,8 +1,7 @@
 <% if current_user != microposts.user %>
   <% if microposts.liked? current_user %>
     <%= link_to "cancel like", micropost_likes_path(microposts), method: :delete %>
-    liked ago <%= microposts.likes.where(user_id: current_user).last.updated_at %>
-              <%= microposts.likes.where(user_id: current_user).last.user_id %>
+    (liked <%= microposts.likedtime(current_user) %>)
   <% else %>
     <%= link_to "like this post", micropost_likes_path(microposts), method: :post %>
   <% end %>

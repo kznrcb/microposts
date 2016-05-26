@@ -51,6 +51,14 @@ class UsersController < ApplicationController
     render 'show_likedposts'
   end
   
+  def all_users
+    @titleformap = "Users located map is below"
+    @titleforlist = "Users are below"
+    @micropost = current_user.microposts.build
+    @users = User.all
+    render 'show_allusers'
+  end
+  
   private
 
   def set_user

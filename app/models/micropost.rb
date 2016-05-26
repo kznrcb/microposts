@@ -11,7 +11,7 @@ class Micropost < ActiveRecord::Base
   end
   
   def likedtime(user)
-    @likedtime = likes.where(user_id: user.id).created_at
+    likes.where(user_id: user.id).last.updated_at
   end
   # def liked_users(post)
   #   User.includes(:likes).where(likes: {micropost_id: post.id})

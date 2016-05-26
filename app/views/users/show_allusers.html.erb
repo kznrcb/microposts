@@ -1,0 +1,37 @@
+<div class="row">
+  <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+  </aside>
+  
+  <div class="col-md-8">
+    
+      <%# Objective map %>
+      <h3><%= @titleformap %></h3>
+      <div id="sample"></div>
+        <script src="./sample.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+      <%= @users.first.name %>
+      <ol class="allusersmap">
+      <%#= render partial: 'micropost', locals: { micropost: @objmicropost } %>
+      </ol>
+
+      <%# Liked user list %>
+      <h3><%= @titleforlist %></h3>
+      <% if @users.any? %>
+        <ol class="follows">
+          <% @users.each do |follow| %>
+            <%= render partial: 'follows/follow', locals: { follow: follow } %>
+          <% end %>
+        </ol>
+      <% end %>
+
+  
+  </div>

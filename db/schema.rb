@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311180324) do
+ActiveRecord::Schema.define(version: 20160310234844) do
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160311180324) do
   end
 
   add_index "likes", ["micropost_id"], name: "index_likes_on_micropost_id"
+  add_index "likes", ["user_id", "micropost_id"], name: "index_likes_on_user_id_and_micropost_id", unique: true
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
