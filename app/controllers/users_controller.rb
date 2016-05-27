@@ -51,12 +51,19 @@ class UsersController < ApplicationController
     render 'show_likedposts'
   end
   
-  def all_users
+  def index
     @titleformap = "Users located map is below"
     @titleforlist = "Users are below"
     @micropost = current_user.microposts.build
     @users = User.all
-    render 'show_allusers'
+    @users.each do |user|
+       {
+        description: user.name,
+        lat: user.latitude,
+        lng: user.longitude,
+        icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=京|7FFF00|000000'
+       },
+    end
   end
   
   private

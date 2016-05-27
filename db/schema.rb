@@ -52,9 +52,11 @@ ActiveRecord::Schema.define(version: 20160310234844) do
     t.string   "profile"
     t.date     "birthday"
     t.string   "gender"
-    t.string   "area"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "address"
+    t.decimal  "latitude",        precision: 9, scale: 6
+    t.decimal  "longitude",       precision: 9, scale: 6
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

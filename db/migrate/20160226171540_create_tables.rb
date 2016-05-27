@@ -8,7 +8,9 @@ class CreateTables < ActiveRecord::Migration
     t.string   "profile"
     t.date     "birthday"
     t.string   "gender"
-    t.string   "area"
+    t.string   "address"
+    t.decimal  "latitude", :precision => 9, :scale => 6
+    t.decimal  "longitude", :precision => 9, :scale => 6
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

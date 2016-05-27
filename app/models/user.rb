@@ -8,8 +8,11 @@ class User < ActiveRecord::Base
   validates :profile,  length: { maximum: 50 }
   validates :birthday,  length: { maximum: 10 }
   validates :gender, length: { maximum: 6 }
-  validates :area, length: { maximum: 50 }
+  validates :address, length: { maximum: 50 }
   has_secure_password
+  
+  geocoded_by :address
+  after_validation :geocode
   
   has_many :microposts
   has_many :likeposts, through: :likes, source: :micropost

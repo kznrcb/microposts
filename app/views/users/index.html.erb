@@ -15,10 +15,12 @@
     
       <%# Objective map %>
       <h3><%= @titleformap %></h3>
-      <div id="sample"></div>
-        <script src="./sample.js"></script>
+      <div style='width: 800px;'>
+        <div id="gmap" style='width: 600px; height: 400px;'></div>
+        <script src="./gmap.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
-      <%= @users.first.name %>
+      </div>
+  
       <ol class="allusersmap">
       <%#= render partial: 'micropost', locals: { micropost: @objmicropost } %>
       </ol>
