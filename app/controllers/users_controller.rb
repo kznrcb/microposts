@@ -56,13 +56,20 @@ class UsersController < ApplicationController
     @titleforlist = "Users are below"
     @micropost = current_user.microposts.build
     @users = User.all
-    @users.each do |user|
-       {
-        description: user.name,
-        lat: user.latitude,
-        lng: user.longitude,
-        icon:'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=京|7FFF00|000000'
-       },
+    @users.each do |user,n|
+      if @usermarkers.present?
+          @usermarkers = @usermarkers +  
+          ',{description:\''+ user.name +
+          '\',lat:'+ user.latitude.to_s +
+          ',lng:'+ user.longitude.to_s +
+          '}'
+        else
+          @usermarkers =
+          '{description:\''+ user.name +
+          '\',lat:'+ user.latitude.to_s +
+          ',lng:'+ user.longitude.to_s +
+          '}'
+        end
     end
   end
   
