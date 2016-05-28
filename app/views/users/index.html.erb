@@ -14,14 +14,21 @@
   <div class="col-md-8">
     
       <%# Objective map %>
-      <h3><%= @titleformap %></h3>
+      <h3><%= @titleformap %>1</h3>
+      <div style='width: 800px;'>
+        <div id="gmap" style='width: 600px; height: 400px;'></div>
+        <%= render 'gmap' %>
+        <%#<script src="./gmap.js"></script>%>
+        <%#<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>%>
+      </div>
+
+      <%# Objective map %>
+      <h3><%= @titleformap %>2</h3>
       <div style='width: 800px;'>
         <div id="gmap" style='width: 600px; height: 400px;'></div>
         <script src="./gmap.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
       </div>
-      <%= @users.first.name %></br>
-      <%= @usermarkers.inspect %></br>
   
       <ol class="allusersmap">
       <%#= render partial: 'micropost', locals: { micropost: @objmicropost } %>

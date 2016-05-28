@@ -31,6 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem "gmaps4rails"
 gem 'geocoder'
 
+gem 'json'
+
 
 
 # Use Unicorn as the app server

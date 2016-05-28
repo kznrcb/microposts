@@ -56,20 +56,9 @@ class UsersController < ApplicationController
     @titleforlist = "Users are below"
     @micropost = current_user.microposts.build
     @users = User.all
-    @users.each do |user,n|
-      if @usermarkers.present?
-          @usermarkers = @usermarkers +  
-          ',{description:\''+ user.name +
-          '\',lat:'+ user.latitude.to_s +
-          ',lng:'+ user.longitude.to_s +
-          '}'
-        else
-          @usermarkers =
-          '{description:\''+ user.name +
-          '\',lat:'+ user.latitude.to_s +
-          ',lng:'+ user.longitude.to_s +
-          '}'
-        end
+    @usermarkers = []
+      @users.each do |user,n|
+        @usermarkers << {description: user.name, lat: user.latitude.to_s , lng: user.longitude.to_s}
     end
   end
   
