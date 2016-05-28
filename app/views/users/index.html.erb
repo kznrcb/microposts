@@ -21,19 +21,7 @@
         <%#<script src="./gmap.js"></script>%>
         <%#<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>%>
       </div>
-
-      <%# Objective map %>
-      <h3><%= @titleformap %>2</h3>
-      <div style='width: 800px;'>
-        <div id="gmap" style='width: 600px; height: 400px;'></div>
-        <script src="./gmap.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
-      </div>
   
-      <ol class="allusersmap">
-      <%#= render partial: 'micropost', locals: { micropost: @objmicropost } %>
-      </ol>
-
       <%# Liked user list %>
       <h3><%= @titleforlist %></h3>
       <% if @users.any? %>
