@@ -27,13 +27,11 @@ function initMap()
         });
  
         markerEvent(i); // マーカーにクリックイベントを追加
+        
+        marker[i].setOptions({//マーカーのオプション設定
+            icon: {url: markerData[0]['icon']} // マーカーの画像を変更
+        });
     }
- 
-    marker[0].setOptions({//マーカーのオプション設定
-        icon: {
-            url: markerData[0]['icon']// マーカーの画像を変更
-        }
-    });
 }
 <%#=// マーカーにクリックイベントを追加%>
 function markerEvent(i) {
