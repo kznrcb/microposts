@@ -1,9 +1,12 @@
-<script src= function initMap() 
-    { // 地図の作成
+<script>
     var map;
     var marker = [];
     var infoWindow = [];
-    var markerData = <%= @usermarkers.to_json %>;
+    var markerData = [];
+    markerData = <%= raw @usermarkers.to_json %>;
+    
+function initMap() 
+    { // 地図の作成
     var mapLatLng = new google.maps.LatLng({lat: markerData[0]['lat'], lng: markerData[0]['lng']}); // 緯度経度のデータ作成
     map = new google.maps.Map(document.getElementById('gmap'), { // #gmapに地図を埋め込む
         center: mapLatLng, // 地図の中心を指定
@@ -31,14 +34,15 @@
             url: markerData[0]['icon']// マーカーの画像を変更
         }
     });
-}></script>
-
+}
 <%#=// マーカーにクリックイベントを追加%>
-<script src= function markerEvent(i) {
+function markerEvent(i) {
     marker[i].addListener('click', function() { // マーカーをクリックしたとき
         infoWindow[i].open(map, marker[i]); // 吹き出しの表示
     });
-}></script>
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 
 <%= @users.first.name %></br>
 <%= @usermarkers.inspect %></br>

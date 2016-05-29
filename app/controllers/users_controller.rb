@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @users = User.all
     @usermarkers = []
       @users.each do |user,n|
-        @usermarkers << {description: user.name, lat: user.latitude.to_s , lng: user.longitude.to_s}
+        @usermarkers << {description: user.name, lat: user.latitude.to_f, lng: user.longitude.to_f, icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=京|7FFF00|000000'}
     end
   end
   
